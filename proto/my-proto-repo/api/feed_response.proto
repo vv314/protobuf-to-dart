@@ -1,0 +1,25 @@
+syntax="proto3";
+
+package api.news.feed;
+
+import "google/protobuf/any.proto";
+
+message FeedResponse {
+    string reqId = 1;
+    uint64 resTime = 2;
+    int32 status = 3;
+    string ver = 4;
+    FeedInfo  info = 5;
+    repeated google.protobuf.Any feed = 7;
+    repeated google.protobuf.Any ads = 8;
+    string feedJson=9;
+    bool useFeedJson=10;
+
+    message FeedInfo{
+        bool noMore=1;
+        string noMoreText=2;
+        string downText=3;
+        string downMinText=4;
+        int32 downMinCount=5;
+    }
+}

@@ -1,0 +1,94 @@
+syntax="proto3";
+
+package datamodel.item;
+
+import "my-proto-repo/models/common.proto";
+
+message ItemBase {
+    datamodel.common.CommonBase base=1;
+    string pkey=2;
+    string newsId=3;
+    string routeUri=4;
+    datamodel.common.CommonRecommend recommendInfo=5;
+    bool isTop=6;
+    bool clickGray=7;
+    bool preload=8;
+}
+
+message ItemImgTxtMod{
+    datamodel.item.ItemBase base = 1;
+    Info info=2;
+
+    message Info {
+        int32 layoutStyle =1;
+        uint32 hotIcon =2;
+        repeated string showTag =3;
+        string title =4;
+        string intro =5;
+        repeated datamodel.common.CommonPic covers =6;
+        datamodel.common.CommonMediaInfo mediaInfo =7;
+        datamodel.common.CommonInteractionInfo interactionInfo=8;
+        int32 picsCount=9;
+        string gifUrl=10;
+        bool hasVideo=12;
+        uint64 showTime=13;
+        string showTimeText=14;
+    }
+}
+
+message ItemVideoMod{
+    datamodel.item.ItemBase base = 1;
+    Info info=2;
+
+    message Info {
+        int32 layoutStyle =1;
+        uint32 hotIcon =2;
+        repeated string showTag =3;
+        string title =4;
+        string intro =5;
+        repeated datamodel.common.CommonPic covers =7;
+        datamodel.common.CommonMediaInfo mediaInfo =8;
+        datamodel.common.CommonInteractionInfo interactionInfo=6;
+        string docId =9;
+        string videoId =10;
+        string videoCate =11;
+        uint64 duration =12;
+        string videoRatio =14;
+        float ratio =15;
+        repeated datamodel.common.CommonVideoStream stream =16;
+        string preBufferId =17;
+        FinishGuide finishGuideInfo =18;
+        datamodel.common.CommonVideoAlbumInfo albumInfo=19;
+        int32 shortVideo=20;
+        uint64 showTime=22;
+        string showTimeText=23;
+
+        message FinishGuide {
+            string title =1;
+            string routeUri =2;
+        }
+    }
+}
+
+message ItemAudioMod{
+    datamodel.item.ItemBase base = 1;
+    Info info = 2;
+
+    message Info {
+        uint32 layoutStyle =1;
+        uint32 hotIcon =2;
+        repeated string showTag =3;
+        uint64 categoryId =4;
+        string albumId = 5;
+        string audioId =6;
+        string title = 7;
+        string intro = 8;
+        uint64 createTime = 9;
+        repeated datamodel.common.CommonPic cover =10;
+        datamodel.common.CommonMediaInfo mediaInfo =11;
+        datamodel.common.CommonInteractionInfo interactionInfo=12;
+        repeated datamodel.common.CommonAudioStream stream = 13;
+    }
+}
+
+
